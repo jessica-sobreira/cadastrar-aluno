@@ -1,4 +1,5 @@
-import { Box, Button, Typography, TextField, Link } from '@mui/material';
+import { useState } from 'react';
+import { Box, Button, Typography, TextField, Link, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../config/hooks';
@@ -7,17 +8,23 @@ export default function LoginForm() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
+    const [student, setStudent] = useState('');
+
+    const handleChange = (event: any) => {
+        setStudent(event.target.value);
+    };
+
     const fazerLogin = (e: any) => {
         e.preventDefault();
         const email = e.target.email.value;
         const senha = e.target.senha.value;
 
-        if (!email || !senha) {
+        if (!email || !senha || !student) {
             alert('Por favor, preencha todos os campos');
             return;
         }
 
-        dispatch({ type: 'login', payload: { email, senha } });
+        dispatch({ type: 'login', payload: { email, senha, student } });
         navigate('/bem-vindo');
     };
 
@@ -55,6 +62,20 @@ export default function LoginForm() {
                     margin="normal"
                     required
                 />
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Aluno</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={student}
+                        onChange={handleChange}
+                        label="Aluno"
+                    >
+                        <MenuItem value="M">M</MenuItem>
+                        <MenuItem value="F">F</MenuItem>
+                        <MenuItem value="T">T</MenuItem>
+                    </Select>
+                </FormControl>
                 <Button variant="contained" type="submit" fullWidth sx={{ marginTop: '10px' }}>
                     Entrar
                 </Button>
