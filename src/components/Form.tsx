@@ -81,7 +81,7 @@ export default function LoginForm() {
                 </Button>
             </form>
             <Typography variant="body1" sx={{ marginTop: '20px' }}>
-                Não tem uma conta? <Link href="/criar-usuario">Cadastre-se!</Link>
+                Não tem uma conta? <Link href="/cadastrar">Cadastre-se!</Link>
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ marginTop: '10px' }}>
                 &copy; Jessica Sobreira 2024
