@@ -77,7 +77,7 @@ export default function LoginForm() {
                     </Select>
                 </FormControl>
                 <Button variant="contained" type="submit" fullWidth sx={{ marginTop: '10px' }}>
-                    Entrar
+                    <Link href="/avaliacao" style={{ color: 'white' }}>Entrar</Link>
                 </Button>
             </form>
             <Typography variant="body1" sx={{ marginTop: '20px' }}>
